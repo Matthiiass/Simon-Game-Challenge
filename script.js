@@ -14,10 +14,26 @@ var sequence = []
 var userSequence = []
 var listeningForPresses = false
 var gameStarted = false
+var blueAudio = new Audio('./sounds/blue.mp3')
+var redAudio = new Audio('./sounds/red.mp3')
+var yellowAudio = new Audio('./sounds/yellow.mp3')
+var greenAudio = new Audio('./sounds/green.mp3')
+var fail = new Audio('./sounds/wrong.mp3')
 
 function flash_button(id) {
     var originalColor = $('#'+ id).css('background-color')
     $('#'+ id).css('background-color', '#ffffff')
+    switch (id) {
+        case "blue":
+            blueAudio.
+            blueAudio.play()
+        case "red":
+            redAudio.play()
+        case "green":
+            greenAudio.play()
+        case "yellow":
+            yellowAudio.play()
+    }
     setTimeout(function() {
         $('#'+ id).css('background-color', originalColor)
     }, 50)
@@ -44,6 +60,7 @@ $(document).ready(function(){
                 listeningForPresses = false
                 document.body.style.backgroundColor = '#bf3b2c'
                 $('#level-title').text('INCORRECT. Game Over!')
+                fail.play()
                 setTimeout(function() {
                     gameStarted = false
                     document.body.style.backgroundColor = '#011F3F'
